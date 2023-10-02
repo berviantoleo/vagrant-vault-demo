@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dotnet-vault-example
+  labels:
+    app: dotnet-vault-example
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: dotnet-vault-example
+  template:
+    metadata:
+      labels:
+        app: dotnet-vault-example
+    spec:
+      containers:
+      - name: dotnet-vault-example
+        image: berviantoleo/dotnet-vault-example:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+        env:
+          - name: Vault__Address
+            value: "http://vault:8200"
+          - name: Vault__Token
+            value: "root"
