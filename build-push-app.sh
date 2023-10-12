@@ -1,3 +1,5 @@
+#!/bin/sh -ex
+
 USERNAME=berviantoleo
 APPNAME=dotnet-vault-example
 cd app
